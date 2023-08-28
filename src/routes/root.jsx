@@ -16,9 +16,12 @@ export default function Root() {
         >
           🏖 Sandbox
         </Link>
-        <div className="cursor-pointer px-4 py-2 bg-white rounded-lg">
+        <Link
+          to={"sales"}
+          className="cursor-pointer px-4 py-2 bg-white rounded-lg"
+        >
           📊 Sales
-        </div>
+        </Link>
         <div className="cursor-pointer px-4 py-2 bg-white rounded-lg">
           🔍 Search
         </div>
