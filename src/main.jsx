@@ -7,6 +7,7 @@ import ErrorPage from "./routes/error-page";
 import Light from "./routes/light";
 import SandBox from "./routes/sandbox";
 import Sales from "./routes/sales";
+import Search from "./routes/search";
 Sales;
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/sales",
     element: <Sales />,
+  },
+  {
+    path: "/search",
+    element: <Search />,
   },
 ]);
 
