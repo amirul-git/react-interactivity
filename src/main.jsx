@@ -5,6 +5,7 @@ import "./index.css";
 import Root from "./routes/root";
 import ErrorPage from "./routes/error-page";
 import Light from "./routes/light";
+import SandBox from "./routes/sandbox";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/light",
     element: <Light />,
+  },
+  {
+    path: "/sandbox",
+    element: <SandBox />,
   },
 ]);
 

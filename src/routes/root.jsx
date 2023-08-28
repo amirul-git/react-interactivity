@@ -10,9 +10,12 @@ export default function Root() {
         >
           🌞 Light
         </Link>
-        <div className="cursor-pointer px-4 py-2 bg-white rounded-lg">
+        <Link
+          to={"sandbox"}
+          className="cursor-pointer px-4 py-2 bg-white rounded-lg"
+        >
           🏖 Sandbox
-        </div>
+        </Link>
         <div className="cursor-pointer px-4 py-2 bg-white rounded-lg">
           📊 Sales
         </div>
