@@ -22,12 +22,18 @@ export default function Root() {
         >
           📊 Sales
         </Link>
-        <div className="cursor-pointer px-4 py-2 bg-white rounded-lg">
+        <Link
+          to={"search"}
+          className="cursor-pointer px-4 py-2 bg-white rounded-lg"
+        >
           🔍 Search
-        </div>
-        <div className="cursor-pointer px-4 py-2 bg-white rounded-lg">
+        </Link>
+        <Link
+          to={"filter"}
+          className="cursor-pointer px-4 py-2 bg-white rounded-lg"
+        >
           ⏳Filter
-        </div>
+        </Link>
       </main>
     </>
   );
