@@ -8,7 +8,8 @@ import Light from "./routes/light";
 import SandBox from "./routes/sandbox";
 import Sales from "./routes/sales";
 import Search from "./routes/search";
-Sales;
+import Filter from "./routes/filter";
+Filter;
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/search",
     element: <Search />,
+  },
+  {
+    path: "/filter",
+    element: <Filter />,
   },
 ]);
 
