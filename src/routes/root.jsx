@@ -32,7 +32,13 @@ export default function Root() {
           to={"filter"}
           className="cursor-pointer px-4 py-2 bg-white rounded-lg"
         >
-          ⏳Filter
+          ⏳ Filter
+        </Link>
+        <Link
+          to={"chat"}
+          className="cursor-pointer px-4 py-2 bg-white rounded-lg"
+        >
+          💬 Chat
         </Link>
       </main>
     </>

@@ -9,7 +9,7 @@ import SandBox from "./routes/sandbox";
 import Sales from "./routes/sales";
 import Search from "./routes/search";
 import Filter from "./routes/filter";
-Filter;
+import Chat from "./routes/chat";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/filter",
     element: <Filter />,
+  },
+  {
+    path: "/chat",
+    element: <Chat />,
   },
 ]);
 
