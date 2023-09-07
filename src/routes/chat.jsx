@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
+import TextBubble from "../components/TextBubble";
 
 export default function Chat() {
   const data = [
@@ -95,23 +96,16 @@ export default function Chat() {
   return (
     <>
       <main className="max-w-lg mx-auto bg-green-50 ">
-        <main className="px-4 pt-4 h-[94vh] overflow-y-auto">
+        <section className="px-4 pt-4 h-[94vh] overflow-y-auto">
           <section className="flex items-end flex-col gap-3">
             {messages &&
               messages.map((message) => {
-                return (
-                  <p
-                    key={message.id}
-                    className="px-4 py-3 bg-green-400 rounded-2xl rounded-tr-none max-w-fit ml-10"
-                  >
-                    {message.text}
-                  </p>
-                );
+                return <TextBubble key={message.id} message={message} />;
               })}
             <p ref={bottomChat}></p>
             <div></div>
           </section>
-        </main>
+        </section>
         <section className="h-16 bg-green-400 absolute bottom-0 left-0 right-0 p-4 max-w-lg mx-auto">
           <form
             onSubmit={(e) => handleSubmit(e)}
