@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import TextBubble from "../components/TextBubble";
+import { createContext } from "react";
+
+export const EmojiContext = createContext("");
 
 export default function Chat() {
   const data = [
@@ -93,37 +96,41 @@ export default function Chat() {
     setMessage(e.target.value);
   }
 
+  const emoji = "💬";
+
   return (
     <>
-      <main className="max-w-lg mx-auto bg-green-50 ">
-        <section className="px-4 pt-4 h-[94vh] overflow-y-auto">
-          <section className="flex items-end flex-col gap-3">
-            {messages &&
-              messages.map((message) => {
-                return <TextBubble key={message.id} message={message} />;
-              })}
-            <p ref={bottomChat}></p>
-            <div></div>
+      <EmojiContext.Provider value={emoji}>
+        <main className="max-w-lg mx-auto bg-green-50 ">
+          <section className="px-4 pt-4 h-[94vh] overflow-y-auto">
+            <section className="flex items-end flex-col gap-3">
+              {messages &&
+                messages.map((message) => {
+                  return <TextBubble key={message.id} message={message} />;
+                })}
+              <p ref={bottomChat}></p>
+              <div></div>
+            </section>
           </section>
-        </section>
-        <section className="h-16 bg-green-400 absolute bottom-0 left-0 right-0 p-4 max-w-lg mx-auto">
-          <form
-            onSubmit={(e) => handleSubmit(e)}
-            className="flex items-center justify-center h-full gap-2"
-          >
-            <input
-              value={message}
-              onChange={(e) => handleMessage(e)}
-              type="text"
-              name="message"
-              className="bg-green-200 h-10 border-none flex-1 outline-none px-4 rounded-xl"
-            />
-            <button className="bg-green-200 h-10 rounded-xl p-2 flex items-center justify-center text-xl">
-              👉
-            </button>
-          </form>
-        </section>
-      </main>
+          <section className="h-16 bg-green-400 absolute bottom-0 left-0 right-0 p-4 max-w-lg mx-auto">
+            <form
+              onSubmit={(e) => handleSubmit(e)}
+              className="flex items-center justify-center h-full gap-2"
+            >
+              <input
+                value={message}
+                onChange={(e) => handleMessage(e)}
+                type="text"
+                name="message"
+                className="bg-green-200 h-10 border-none flex-1 outline-none px-4 rounded-xl"
+              />
+              <button className="bg-green-200 h-10 rounded-xl p-2 flex items-center justify-center text-xl">
+                👉
+              </button>
+            </form>
+          </section>
+        </main>
+      </EmojiContext.Provider>
     </>
   );
 }
