@@ -10,6 +10,7 @@ import Sales from "./routes/sales";
 import Search from "./routes/search";
 import Filter from "./routes/filter";
 import Chat from "./routes/chat";
+import Reducer from "./routes/reducer";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/chat",
     element: <Chat />,
+  },
+  {
+    path: "/reducer",
+    element: <Reducer />,
   },
 ]);
 
