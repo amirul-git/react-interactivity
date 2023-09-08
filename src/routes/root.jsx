@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Root() {
   return (
     <>
-      <main className="p-6 flex justify-center   gap-3">
+      <main className="p-6 flex justify-center gap-3 flex-wrap">
         <Link
           to={"light"}
           className="cursor-pointer px-4 py-2 bg-white rounded-lg"
