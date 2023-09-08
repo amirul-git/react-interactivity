@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { useEffect } from "react";
 import { useState } from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
@@ -28,14 +27,10 @@ export default function todo() {
     setTodos(newTodos);
   }
 
-  useEffect(() => {
-    console.log(todos);
-  }, [todos]);
-
   return (
     <>
       <main className="max-w-md mx-auto p-4">
-        <h1 className="font-bold text-center mb-4">AutoAnimate 🤩</h1>
+        <h1 className="font-bold text-center mb-4">AutoAnimate Todo 🤩</h1>
         <section ref={animationParent} className="mb-4">
           {todos.map((todo) => {
             return (
@@ -44,10 +39,12 @@ export default function todo() {
                 key={todo.id}
               >
                 <p>{todo.text}</p>
-                <span
-                  onClick={() => handleDelete(todo)}
-                  className="bg-purple-600 w-4 h-4 rounded-full"
-                ></span>
+                <section className="flex gap-3">
+                  <div
+                    onClick={() => handleDelete(todo)}
+                    className="bg-purple-600 w-4 h-4 rounded-full"
+                  ></div>
+                </section>
               </div>
             );
           })}
