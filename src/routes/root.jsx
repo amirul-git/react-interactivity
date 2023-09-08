@@ -46,6 +46,12 @@ export default function Root() {
         >
           🔢 Reducer
         </Link>
+        <Link
+          to={"todo"}
+          className="cursor-pointer px-4 py-2 bg-white rounded-lg"
+        >
+          📝 Todo
+        </Link>
       </main>
     </>
   );
