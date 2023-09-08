@@ -11,6 +11,7 @@ import Search from "./routes/search";
 import Filter from "./routes/filter";
 import Chat from "./routes/chat";
 import Reducer from "./routes/reducer";
+import Todo from "./routes/todo";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/reducer",
     element: <Reducer />,
+  },
+  {
+    path: "/todo",
+    element: <Todo />,
   },
 ]);
 
