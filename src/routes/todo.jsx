@@ -1,12 +1,13 @@
 import { useRef } from "react";
 import { useState } from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { useEffect } from "react";
 
 export default function todo() {
   const [animationParent] = useAutoAnimate();
 
   const [todos, setTodos] = useState([
-    { id: crypto.randomUUID(), text: "Hello world" },
+    { id: crypto.randomUUID(), text: "Hello world", order: 1 },
   ]);
   const [todo, setTodo] = useState("");
   const input = useRef(null);
@@ -19,12 +20,63 @@ export default function todo() {
     e.preventDefault();
     setTodo("");
     input.current.focus();
-    setTodos([...todos, { id: crypto.randomUUID(), text: todo }]);
+    setTodos([
+      ...todos,
+      { id: crypto.randomUUID(), text: todo, order: todos.length + 1 },
+    ]);
   }
 
   function handleDelete({ id }) {
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
+  }
+
+  function handleUp(todo) {
+    const firstTodo = todo.order === 1;
+    if (firstTodo) {
+      return;
+    }
+
+    const affectedTodos = todos.map((t) => {
+      const selectedTodo = t.order === todo.order;
+      const affectedTodo = t.order === todo.order - 1;
+
+      if (selectedTodo) {
+        return { ...t, order: t.order - 1 };
+      } else if (affectedTodo) {
+        return { ...t, order: t.order + 1 };
+      } else {
+        return t;
+      }
+    });
+
+    const sortedTodos = affectedTodos.sort((a, b) => a.order - b.order);
+
+    setTodos(sortedTodos);
+  }
+
+  function handleDown(todo) {
+    const lastTodo = todo.order === todos.length;
+    if (lastTodo) {
+      return;
+    }
+
+    const affectedTodos = todos.map((t) => {
+      const selectedTodo = t.order === todo.order;
+      const affectedTodo = t.order === todo.order + 1;
+
+      if (selectedTodo) {
+        return { ...t, order: t.order + 1 };
+      } else if (affectedTodo) {
+        return { ...t, order: t.order - 1 };
+      } else {
+        return t;
+      }
+    });
+
+    const sortedTodos = affectedTodos.sort((a, b) => a.order - b.order);
+
+    setTodos(sortedTodos);
   }
 
   return (
@@ -40,6 +92,18 @@ export default function todo() {
               >
                 <p>{todo.text}</p>
                 <section className="flex gap-3">
+                  <div
+                    style={{ display: todo.order === 1 ? "none" : "block" }}
+                    onClick={() => handleUp(todo)}
+                    className="bg-purple-600 w-4 h-4 rounded-t-full"
+                  ></div>
+                  <div
+                    style={{
+                      display: todo.order === todos.length ? "none" : "block",
+                    }}
+                    onClick={() => handleDown(todo)}
+                    className="bg-purple-600 w-4 h-4 rounded-b-full"
+                  ></div>
                   <div
                     onClick={() => handleDelete(todo)}
                     className="bg-purple-600 w-4 h-4 rounded-full"
